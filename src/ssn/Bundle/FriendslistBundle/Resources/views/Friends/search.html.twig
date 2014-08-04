@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+{% block title %}2sn - Friends List{% endblock %}
+{% block body %}
+<!-- CONTENT BOX - DATATABLE -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>2sn - Search</h2>
+    </div>
+    <div class="box-wrap clear">
+      <div class="col4-4">
+        <form action="{{ path('searchfriend') }}" method="post">
+        Search new friends: <input type="text" name="searchfield"><input type="submit" value="Search">
+        </form>
+        <table class="style1">
+          <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Login</th>
+              <th>Presentation</th>
+              <th>City</th>
+	      <th>Add</th>
+	      <th></th>`
+            </tr>
+          </thead>
+          <tbody>
+            {% for match in matchs %}
+            <tr>
+              <td><img src="{{match.avatar}}" width="80"></td>
+              <td>{{match.username}}</td>
+              <td>{{match.presentation}}</td>
+              <td>{{match.city}}</td>
+              <td>
+                <a href="{{ path('addfriends', {'friends' : match.id}) }}"><input type="submit" value="Add to my friend" class="button size-120"></a>
+              </td>
+	      <td></td>
+	      <td></td>
+            </tr>
+            {% endfor %}
+	  </tbody>
+        </table>
+      </div><!-- /#table -->
+    </div><!-- end of box-wrap -->
+  </div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}
+
+

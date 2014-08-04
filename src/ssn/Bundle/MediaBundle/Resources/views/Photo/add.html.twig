@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block title %}Media - 2sn{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>Add a picture in album "{{album.name}}"</h2>
+    </div>
+    <div class="login-inside-register">
+      <div class="album-data">
+        <fieldset>
+	  <form action="#" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	    <input type="submit" value="Upload Photos" />
+	  </form>
+	</fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+

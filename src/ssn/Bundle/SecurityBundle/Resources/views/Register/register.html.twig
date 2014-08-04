@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description"  content="This application is an administration tool for web development"/>
+    <meta name="Author" content="Knut"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <title>2sn - Register</title>
+        {% block stylesheets %}
+    <link href="{{ asset('bundles/ssn/css/reset.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/screen.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/fancybox.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/jquery.wysiwyg.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/jquery.ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/visualize.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/ssn/css/visualize-light.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+     </head>
+  <body class="login">
+    <div class="login-box">
+      <div class="login-border">
+	<div class="login-style-register">
+	  <div class="login-header">
+	    <div class="logo clear">
+	      <img src="{{asset ('bundles/ssn/images/logo_earth.png') }}" alt="" class="picture" />
+	      <span class="textlogo">
+		<span class="title">2sn - Register</span>
+		<span class="text">Super Social Network</span>
+	      </span>
+	    </div>
+	  </div>
+	  <div class="login-inside-register">
+	    <div class="login-data">
+	      <form method="post" {{ form_enctype(form) }}>
+    		<fieldset>
+		  {{ form_widget(form) }}
+		  <center><input type="submit" class="btn btn-primary" /></center>
+		</fieldset>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="login-links"><p><strong>&copy; 2013 Copyright by Random</a></strong> No rights reserved.</p></div>
+</div>
+{% block javascripts %}
+<script src="{{ asset('bundles/ssn/js/jquery.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.visualize.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.wysiwyg.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.tinymce.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.fancybox.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.idtabs.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.datatables.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.jeditable.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.ui.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.jcarousel.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/jquery.validate.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/excanvas.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/cufon.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/Zurich_Condensed_Lt_Bd.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/ssn/js/script.js') }}" type="text/javascript"></script>
+{% endblock %}
+</body>
+</html>

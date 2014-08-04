@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+{% block title %}Media - 2sn{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>Albums</h2>
+    </div>
+    <div class="login-inside-register">
+      <div class="album-data">
+        <form method="post" action="{{path('createalbum')}}">
+          <fieldset>
+	    <label>Name of album:</label>  <input type="text" required="required" name="name"><br/>
+	    <label>Localisation:</label>  <input type="text" required="required" name="localisation"><br/>
+	    <label>Description: </label> <textarea cols="40" name="description" required="required" rows="4" placeholder="My holidays..."></textarea>
+	    <center><input type="submit" class="btn btn-primary" /></center>
+	  </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+

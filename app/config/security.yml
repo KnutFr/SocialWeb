@@ -1,0 +1,47 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+security:
+    encoders:
+        ssn\Bundle\SuperAdminBundle\Entity\Users:
+            algorithm:   bcrypt
+            cost: 5
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        database: 
+            entity: { class: ssn\Bundle\SuperAdminBundle\Entity\Users,  property: username }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/demo/secured/login$
+            security: false
+        secured_area:
+            access_denied_url: /
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  /
+                check_path:  /login_check
+                always_use_default_target_path: true
+                default_target_path: /timeline
+            logout:
+                path:   /logout
+                target: /
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+         - { path: ^/sadmin, roles: ROLE_ADMIN }
+         - { path: /, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: /.*, roles: ROLE_USER }
+

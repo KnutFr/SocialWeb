@@ -1,0 +1,36 @@
+ssn_security:
+    resource: "@ssnSecurityBundle/Resources/config/routing.php"
+    prefix:   /
+
+ssn_media:
+    resource: "@ssnMediaBundle/Resources/config/routing.php"
+    prefix:   /media
+
+ssn_publication:
+    resource: "@ssnPublicationBundle/Resources/config/routing.php"
+    prefix:   /publication
+
+ssn_profil:
+    resource: "@ssnProfilBundle/Resources/config/routing.php"
+    prefix:   /
+
+ssn_achievements:
+    resource: "@ssnAchievementsBundle/Resources/config/routing.php"
+    prefix:   /achievements
+
+ssn_friendslist:
+    resource: "@ssnFriendslistBundle/Resources/config/routing.php"
+    prefix:   /friends
+
+ssn_admin:
+    resource: "@ssnAdminBundle/Resources/config/routing.php"
+    prefix:   /admin
+
+ssn_timeline:
+    resource: "@ssnTimelineBundle/Resources/config/routing.php"
+    prefix:   /
+
+ssn_super_admin:
+    resource: "@ssnSuperAdminBundle/Resources/config/routing.php"
+    prefix:   /sadmin
+

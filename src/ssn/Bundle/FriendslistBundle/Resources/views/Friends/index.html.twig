@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+{% block title %}2sn - Friends List{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2> Friends List </h2>
+    </div>
+    <div class="box-wrap clear">
+      <div class="col3-6">
+	<p><small>All your friends are listed here.</small></p>
+	<form action="{{ path('searchfriend') }}" method="post">
+	Search new friends: <input type="text" name="searchfield"><input type="submit" value="Search">
+	</form>
+	<table class="style1">
+	  <thead>
+	    <tr>
+	      <th>Avatar</th>
+	      <th>Presentation</th>
+	      <th>Actions</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+            {% for friend in friends %}
+	    {% if friend.0 is defined %}
+            <tr>
+              <td>
+                <a href="index.html#" title="preview"><img src='{{friend.0.avatar}}' alt="" class="thumb size48" /></a>
+              </td>
+              <td><h4>{{friend.0.username}}</h4>
+                <p class="description">{{friend.0.presentation}}</p></td>
+              <td class="center vcenter">
+                <input type="submit" value="Send a message" class="button size-120">
+		{% if friend.id is defined %}
+                <a href="{{ path('delfriend', {'friend' : friend.id}) }}"><input type="submit" value="Delete from friends" class="button red size-120"></a>
+	      {% endif %}
+	      </td>
+            </tr>
+	    {% endif %}
+            {% endfor %}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+  </div>
+</div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}

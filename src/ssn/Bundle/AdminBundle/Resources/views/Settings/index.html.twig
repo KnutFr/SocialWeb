@@ -1,0 +1,161 @@
+{% extends '::base.html.twig' %}
+{% block title %}2sn Settings{% endblock %}
+
+{% block body %}
+
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2> 2sn - Settings </h2>
+    </div>
+    <div class="box-wrap clear">
+      <div class="col3-5">
+	<p><small>Configure your profil</small></p>
+	<table class="style1">
+	  <thead>
+	    <tr>
+	      <th>General</th>
+	      <th></th>
+	      <th>Share with ?</th>
+	      </tr>
+	    </thead>
+	  <tbody>
+
+	    <tr><!-- Champ Confidentialité -->
+	      <td>
+		<label for="search" class="form-label size-120"><h4>Search</h4></label>
+		<p class="description">Choose who can find you by searching your nickname</p>
+		</td>
+	      <td>
+		</td>
+	      <td>
+		<select id="select" class="fl-space2" name="form[select]">
+		  <option value="anyone">Everyone</option>
+		  <option value="friendfriend" selected="selected">Friends' friends</option>
+		  <option value="friend">Friends only</option>
+		  <option value="none">Nobody</option>
+		  </select>
+		</td>
+	      </tr>
+
+	    <tr><!-- Champ MEDIA -->
+	      <td>
+		<label for="media" class="form-label size-120"><h4>Medias</h4></label>
+		<p class="description">Choose who can find your video & photos</p>
+		</td>
+	      <td>
+		</td>
+	      <td>
+		<select id="select" class="fl-space2" name="form[select]">
+		  <option value="anyone" selected="selected">Everyone</option>
+		  <option value="friendfriend">Friends' friends</option>
+		  <option value="friend">Friends only</option>
+		  <option value="none">Nobody</option>
+		  </select>
+		</td>
+	      </tr>
+
+	    <tr><!-- Champ PARCOURIR -->
+	      <td>
+		<label for="browse" class="form-label size-120"><h4>Friends</h4></label>
+		<p class="description">Choose who can see your friends</p>
+		</td>
+	      <td>
+		</td>
+	      <td>
+		<select id="select" class="fl-space2" name="form[select]">
+		  <option value="anyone" selected="selected">Everyone</option>
+		  <option value="friendfriend">Friends' friends</option>
+		  <option value="friend">Friends only</option>
+		  <option value="none">Nobody</option>
+		  </select>
+		</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+	<table class="style1">
+	  <thead>
+	    <tr>
+	      <th>Yourself</th>
+	      <th></th>
+	     	      </tr>
+	    </thead>
+	  <tbody>
+
+            <tr>
+              <td>
+                <label for="sex" class="form-label size-120"><h4>Presentation</h4></label>
+                </td>
+              <td>
+                {{ form_widget(form.presentation) }}
+                </td>
+            </tr>
+	    <tr>
+	      <td>
+		<label for="sex" class="form-label size-120"><h4>Gender</h4></label>
+		</td>
+	      <td>
+		{{ form_widget(form.gender) }}
+		</td>
+	    </tr>
+
+	    <tr>
+	      <td>
+		<label for="Name" class="form-label size-120"><h4>Birthday</h4></label>
+		</td>
+	      <td>
+		{{ form_widget(form.birthday) }}
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<label for="city" class="form-label size-120"><h4>City</h4></label>
+		</td>
+	      <td>
+		{{ form_widget(form.city) }}
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<label for="country" class="form-label size-120"><h4>Country</h4></label>
+		</td>
+	      <td>
+		{{ form_widget(form.country) }}
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<label for="phone" class="form-label size-120"><h4>Téléphone</h4></label>
+		</td>
+	      <td>
+		{{ form_widget(form.phone) }}
+		</td>
+	    </tr>
+	    <tr><!-- Champ PWD -->
+	      <td>
+		<label for="passwd" class="form-label size-120"><h4>Password</h4></label>
+	      </td>
+	      <td>
+		{{ form_widget(form.password) }}
+	      </td>
+	    </tr>
+            <tr>
+              <td>
+                <label for="passwd" class="form-label size-120"><h4>Avatar</h4></label>
+              </td>
+              <td>
+                {{ form_widget(form.avatar) }}
+              </td>
+            </tr>
+	  </tbody>
+	</table>
+	<center>
+	  <input type="submit" value="Save this changes" class="button green size-120">
+	</center>
+	</div>
+      </div>
+    </div> <!-- end of box-body -->
+  </div> <!-- end of content-box -->
+{% endblock %}

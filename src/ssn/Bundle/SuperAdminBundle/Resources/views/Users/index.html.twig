@@ -1,0 +1,56 @@
+{% extends '::admin.html.twig' %}
+{% block title %}Administration Publication{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX - DATATABLE -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>User's Administration</h2>
+    </div>
+    <div class="box-wrap clear">
+      <!-- DATA-TABLE JS PLUGIN -->
+      <div id="data-table">
+	<p>In this place you can edit information about 2sn's publication</p>
+	<form method="post" action="">
+	  <table class="style1 datatable">
+	    <thead>
+	      <tr>
+		<th class="bSortable"><input type="checkbox" class="checkbox select-all" /></th>
+		<th>Username</th>
+		<th>Mail</th>
+		<th>Country</th>
+		<th>Birthday</th>
+		<th>City</th>
+		<th>Presentation</th>
+		<th>Phone</th>
+		<th></th>
+		<th></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {% for user in users %}
+   	      <tr>
+		<td><input type="checkbox" class="checkbox" /></td>
+		<td>{{user.username}}</td>
+		<td>{{user.mail}}</td>
+		<td>{{user.country}}</td>
+		<td>{{user.birthday|date("Y-m-d")}}</td>
+		<td>{{user.city}}</td>
+		<td>{{user.presentation}}</td>
+		<td>{{user.phone}}</td>
+		<td></td>
+		<td>
+		  <a href="tables.html#"><img src="{{ asset('bundles/ssn/images/ico_edit_16.png') }}" class="icon16 fl-space2" alt="" title="edit" /></a>
+		  <a href="tables.html#"><img src="{{ asset('bundles/ssn/images/ico_delete_16.png') }}" class="icon16 fl-space2" alt="" title="delete" /></a>
+		  <a href="tables.html#"><img src="{{ asset('bundles/ssn/images/ico_settings_16.png') }}" class="icon16 fl-space2" alt="" title="settings" /></a>
+		</td>
+	      </tr>
+	      {% endfor %}
+	  </table>
+	</form>
+      </div><!-- /#table -->
+    </div><!-- end of box-wrap -->
+  </div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}

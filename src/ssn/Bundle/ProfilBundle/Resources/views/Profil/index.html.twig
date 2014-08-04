@@ -1,0 +1,149 @@
+{% extends '::base.html.twig' %}
+{% block title %}2sn Profil{% endblock %}
+
+{% block body %}
+
+<div class="customcol">
+
+  <div class="content-box col4-4">
+    <div class="box-body">
+      <div class="box-header clear">
+	<h2>{{profil.username}}</h2>
+	<div>
+	  <img src="{{profil.avatar}}" style="float:left; margin-right: 10px;" width="150px">
+	  {{profil.presentation}}
+	</div>
+      </div>
+    </div>
+  </div>
+  <!-- Publications -->
+
+  <div class="content-box col3-4">
+    <div class="box-body">
+      <div class="box-header clear">
+	<h2>Five Most Recent publications</h2>
+	</div>
+      <div>
+	<table class="style1">
+	  <tbody>
+	    {% for publication in publications %}
+	    <tr>
+	      <td>
+		<img src="{{profil.avatar}}" alt="" class="thumb size48"></td>
+	      <td>
+		<p class="description"><b>{{publication.date | date("m-d-Y H:i")}}</b> => {{publication.content}}</p></td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+	</div>
+    </div>
+  <div class="content-box col3-4">
+     <div class="box-body">
+       <div class="box-header clear">
+         <h2>Most Recent Achievements</h2>
+       </div>
+       <div>
+         <table class="style1">
+           <tbody>
+             {% for achieved in achieveds %}
+             <tr>
+               <td><img src="{{achieved.achievement.logo}}" alt="" class="thumb size48"></td>
+               <td>
+                 <h4>
+                  {{achieved.achievement.name}}
+                 </h4>
+                 <p class="description">{{achieved.achievement.description}}</p></td>
+               <td class="vcenter"><p>{{achieved.dateof | date("m-d-Y H:i")}}</p></td>
+              <td class="center vcenter">+{{achieved.achievement.point}}pts</td>
+             </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+       </div>
+     </div>
+   </div>
+  </div>
+  <!-- Mes infos -->
+
+  <div class="content-box col1-4 lastcol">
+    <div class="box-body">
+      <div class="box-header clear">
+	<h2>ID Card</h2>
+	</div>
+      <div>
+	<table class="style1">
+	  <tr>
+	    <td width="50%">Name :</td>
+	    <td>{{profil.name}}</td>
+	    </tr>
+	  <tr>
+	    <td>Lastname :</td>
+	    <td>{{profil.lastname}}</td>
+	    </tr>
+	  <tr>
+	    <td>Age :</td>
+	    <td>{{age}}</td>
+	    </tr>
+	  <tr>
+	    <td>Gender :</td>
+	    <td>{% if profil.gender == "m" %}
+	      Men
+	      {% elseif profil.gender == "f" %}
+	      Woman
+	      {% else %}
+	      Other
+	      {% endif %}
+	    </td>
+	    </tr>
+	  <tr>
+	    <td>Localisation :</td>
+	    <td>{{profil.city}}</td>
+	    </tr>
+	  <tr>
+	    <td>Mail :</td>
+	    <td><a href="mailto:{{profil.mail}}">{{profil.mail}}</a></td>
+	    </tr>
+	  </table>
+	</div>
+      </div>
+  <div class="content-box col1-4 lastcol">
+    <div class="box-body">
+      <div class="box-header clear">
+        <h2>Albums</h2>
+      </div>
+      <div>
+        <div class="gallery gal-small">
+          <ul class="clear">
+	    {% for album in albums %}
+	    <li><a href="{{ path('consultalbum', {'idalbum' : album.id})}}" rel="group2" title="{{album.name}}">
+                {% if album.photos.last %}
+                <img src="{{asset (album.photos.last.webpath)}}" alt="" class="thumb">
+                {% else %}
+                <img src="{{asset ('uploads/documents/soon.jpg')}}" alt="" class="thumb">
+                {% endif %}
+	    </a> {{album.name}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+  <div class="content-box col1-4 lastcol">
+    <div class="box-body">
+      <div class="box-header clear">
+        <h2>Friends</h2>
+      </div>
+      <div>
+        <div class="gallery gal-small">
+          <ul class="clear">
+            {% for friend in friends %}
+            <li><a href="{{ path('profil', {'id': friend.friendwith.id}) }}"><img src="{{friend.friendwith.avatar}}" alt="{{friend.friendwith.username}}" class="thumb">{{friend.friendwith.username}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+   {% endblock %}

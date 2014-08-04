@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+{% block title %}2sn - Achievements List{% endblock %}
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2> Achievements </h2>
+      </div>
+    <div class="box-wrap clear">
+     	<div class="col4-4">
+	  <p><small>You are in perpetual change ... your profile as</small></p>
+	  <table class="style1">
+	    <thead>
+	      <tr>
+		<th colspan="2" width="60%">Most recent Achievements</th>
+		<th>Date</th>
+		<th>Points</th>
+		</tr>
+	      </thead>
+	    <tbody>
+	      {% for achieved in rachieveds %}
+	      <tr>
+		<td><img src="{{achieved.achievement.logo}}" alt="" class="thumb size48" /></td>
+		<td><h4>{{achieved.achievement.name}}</h4><p class="description">{{achieved.achievement.description}}</p></td>
+		<td class="vcenter"><p>{{achieved.dateof | date("m-d-Y H:i")}}</p></td>
+		<td class="center vcenter">{{achieved.achievement.point}}pts</td>
+		</tr>
+	      {% endfor %}
+	      </tbody>
+	    </table>
+	  <table class="style1">
+	    <thead>
+	      <tr>
+		<th colspan="2" width="60%">Achievements unlocked</th>
+		<th>Date</th>
+		<th>Points</th>
+		</tr>
+	      </thead>
+	    <tbody>
+	      {% for achieved in achieveds %}
+	      <tr>
+	        <td><img src="{{achieved.achievement.logo}}" alt="" class="thumb size48" /></td>
+                <td><h4>{{achieved.achievement.name}}</h4><p class="description">{{achieved.achievement.description}}</p></td>
+                <td class="vcenter"><p>{{achieved.dateof | date("m-d-Y H:i")}}</p></td>
+                <td class="center vcenter">{{achieved.achievement.point}}pts</td>
+		</tr>
+	      {% endfor %}
+	    </tbody>
+	    </table>
+	  <table class="style1">
+	    <thead>
+	      <tr>
+		<th colspan="2" width="60%">Achievements locked</th>
+		<th>Points</th>
+		</tr>
+	      </thead>
+	    <tbody>
+	      {% for achievement in nachieved %}
+	      <tr>
+		<td><img src="{{achievement.logo}}" alt="" class="thumb size48" /></td>
+		<td><h4>{{achievement.name}}</h4><p class="description">{{achievement.description}}</p></td>
+		<td class="center vcenter">+{{achievement.point}}</td>
+		</tr>
+	      {% endfor %}
+	    </tbody>
+	    </table>
+	  </div>
+	</div>
+      </div>
+    </div> <!-- end of box-body -->
+  </div> <!-- end of content-box -->
+{% endblock %}

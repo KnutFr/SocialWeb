@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block title %}Albums {{album.name}} 2sn{% endblock %}
+
+{% block body %}
+
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>Albums "{{album.name}}" by {{album.user.username}}</h2>
+      </div>
+    <div class="box-wrap clear">
+      <div class="col4-4">
+	<div class="gal-footer clear">
+	  {% if album.user.id == user.id %}
+	  <a href="{{ path('addpicture',{'idalbum' : album.id})}}" class="button fr">Add New Picture</a></div>
+	{% endif %}
+	<div class="gallery gal-large">
+	    <ul class="clear">
+	      {% for picture in photos %}
+	      <li>
+		<a href="#" rel="group1" title="{{picture.id}}">
+		  <img src="{{ asset(picture.webPath)}}" alt="" class="thumb">
+		  {% if album.user.id == user.id %}
+		  <a href="{{ path('delpicture',{'idpicture' : picture.id})}}">Delete</a>
+		  {% endif %}
+		</a>
+	      </li>
+	      {% endfor %}
+	    </ul>
+	  </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}

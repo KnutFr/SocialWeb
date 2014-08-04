@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+{% block title %}Media - 2sn{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2>Albums</h2>
+      </div>
+    <div class="box-wrap clear">
+	<div class="col4-4">
+	  <div class="gal-footer clear">
+	    <a href="{{ path('addalbum')}}" class="button fr">Add New Album</a>
+	  </div>
+	  <div class="gallery gal-large">
+	    <ul class="clear">
+	      {% for album in albums %}
+	      <li>
+
+		<a href="{{ path('delalbum', {'idalbum' : album.id})}}" class="close" title="Delete Album">X<br/></a>
+		<a href="{{ path('consultalbum', {'idalbum' : album.id})}}" rel="group1" title="">
+		  {% if album.photos.last %}
+		  <img src="{{asset (album.photos.last.webpath)}}" alt="" class="thumb">
+		  {% else %}
+		  <img src="{{asset ('uploads/documents/soon.jpg')}}" alt="" class="thumb">
+		  {% endif %}
+		<span class="title"><span class="wrap">{{album.name}} @ {{album.place}}</span></span>
+	      </a>
+		{{album.comments}}
+
+	      </li>
+	      {% endfor %}
+	    </ul>
+	  </div>
+	</div>
+    </div>
+  </div>
+</div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}

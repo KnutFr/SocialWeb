@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{user.username}} - Timeline{% endblock %}
+
+{% block body %}
+<!-- CONTENT BOX WITH SIDEBAR -->
+<div class="content-box">
+  <div class="box-body">
+    <div class="box-header clear">
+      <h2> Timeline </h2>
+    </div>
+    <div class="box-wrap clear">
+      <div class="col3-4">
+	<table class="style1">
+	  <thead>
+	    <tr>
+	      <th>Avatar</th>
+	      <th width="15%">Date</th>
+	      <th>Publication</th>
+	      <th colspan="2">Thumb</th>
+	    </tr>
+	  </thead>
+	  {% if pager.haveToPaginate %}
+	  {{ pagerfanta(pager, 'default', {'routeName': 'timeline'}) }}
+	  {% endif %}
+	  <tbody>
+	    {% for publication in pager.currentPageResults %}
+	    <tr>
+              <td>
+                <a href="{{ path('profil', {'id': publication.user.id}) }}" title="preview">
+                  <img src="{{publication.user.avatar}}" alt="" class="thumb size48" />
+                  <center><b>{{publication.user.username}}</b></center>
+                </a>
+              </td>
+	      <td>{{publication.date|date("m-d-Y H:i")}}</td>
+	      <td><h4></h4>
+		<p class="description">{{publication.content}}</p></td>
+	      <td class="center vcenter">
+	      </td>
+		<td class="center vcenter"></td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+      </div>
+      <div class="col4-1">
+        <form action="{{ path('publishtext') }}" method="post">
+	  <fieldset>
+            <textarea name="publication" rows="8" cols="40" placeholder="How is your mind today?"></textarea>
+	    <select name="access">
+	      {% for kind in access %}
+	      <option value="{{kind.id}}">{{kind.value}}</option>
+              {% endfor %}
+	    </select>
+            <input type="submit" value="Publish this update">
+	  </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> <!-- end of box-body -->
+</div> <!-- end of content-box -->
+{% endblock %}
